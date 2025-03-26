@@ -1,0 +1,303 @@
+
+#root {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.glass-card {
+  @apply bg-gradient-to-br from-gray-900/70 via-gray-800/60 to-gray-900/70 backdrop-blur-xl border border-white/10 shadow-lg rounded-2xl;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.glass-card:hover {
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.25);
+  transform: translateY(-5px) scale(1.02);
+}
+
+/* Modern animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes shine {
+  from {
+    background-position: 200% center;
+  }
+  to {
+    background-position: -200% center;
+  }
+}
+
+.float-animation {
+  animation: float 4s ease-in-out infinite;
+}
+
+.pulse-animation {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.animate-shine {
+  animation: shine 3s linear infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(30, 30, 30, 0.6);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(79, 140, 201, 0.6);
+  border-radius: 4px;
+  border: 1px solid rgba(30, 30, 30, 0.6);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(79, 140, 201, 0.8);
+}
+
+/* Button effects */
+.btn-effect {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.btn-effect:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.btn-effect:hover:after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(20, 20);
+    opacity: 0;
+  }
+}
+
+/* 3D effects */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.card-3d:hover {
+  transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+}
+
+.btn-3d {
+  position: relative;
+  transition: transform 0.2s;
+  transform-style: preserve-3d;
+}
+
+.btn-3d:hover {
+  transform: translateY(-3px);
+}
+
+.btn-3d:active {
+  transform: translateY(1px);
+}
+
+/* Image hover effects */
+.img-hover-zoom {
+  overflow: hidden;
+}
+
+.img-hover-zoom img {
+  transition: transform 0.5s ease;
+}
+
+.img-hover-zoom:hover img {
+  transform: scale(1.05);
+}
+
+/* Gradient text */
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-mother-blue-light via-mother-blue-dark to-mother-pink-dark;
+  animation: gradient-shift 8s infinite alternate;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Floating elements */
+.floating {
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Card deck effect */
+.card-deck > * {
+  transition: all 0.3s ease;
+}
+
+.card-deck:hover > *:not(:hover) {
+  opacity: 0.7;
+  filter: blur(2px);
+  transform: scale(0.95);
+}
+
+/* Shimmer effect */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 2s infinite;
+  transform: rotate(30deg);
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) rotate(30deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(30deg);
+  }
+}
+
+/* Perspective utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* Morphing blob animation */
+.blob {
+  border-radius: 42% 56% 72% 28% / 42% 42% 56% 48%;
+  animation: morph 3.75s linear infinite;
+}
+
+@keyframes morph {
+  0%, 100% { border-radius: 42% 56% 72% 28% / 42% 42% 56% 48%; }
+  25% { border-radius: 72% 28% 48% 48% / 28% 28% 72% 72%; }
+  50% { border-radius: 28% 48% 48% 72% / 28% 28% 72% 48%; }
+  75% { border-radius: 48% 42% 28% 72% / 72% 42% 56% 48%; }
+}
+
+/* Glassmorphism specific effects */
+.glass-morphism {
+  @apply bg-gradient-to-br from-gray-900/60 via-gray-800/50 to-gray-900/60 backdrop-blur-lg border border-white/10;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Neon glow effects */
+.neon-glow {
+  box-shadow: 0 0 5px rgba(49, 130, 206, 0.5), 
+              0 0 10px rgba(49, 130, 206, 0.3);
+}
+
+.neon-text {
+  text-shadow: 0 0 5px rgba(49, 130, 206, 0.5), 
+               0 0 10px rgba(49, 130, 206, 0.3);
+}
+
+/* Modern card styles */
+.modern-card {
+  @apply bg-gradient-to-br from-gray-900/70 to-gray-800/50 backdrop-blur-xl rounded-xl border border-white/10 shadow-lg;
+  transition: all 0.3s ease;
+}
+
+.modern-card:hover {
+  @apply shadow-xl border-white/20;
+  transform: translateY(-5px);
+}
+
+/* Cool button styles */
+.cool-button {
+  @apply relative overflow-hidden bg-gradient-to-r from-mother-blue-dark to-mother-blue transition-all duration-300 rounded-lg px-6 py-3 text-white font-medium shadow-md;
+}
+
+.cool-button::before {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-r from-mother-pink to-mother-blue-dark opacity-0 transition-opacity duration-300;
+}
+
+.cool-button:hover::before {
+  @apply opacity-100;
+}
+
+.cool-button span {
+  @apply relative z-10;
+}
+
+/* Animated background */
+.animated-bg {
+  background: linear-gradient(-45deg, #3182CE, #D53F8C, #38A169, #3182CE);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
